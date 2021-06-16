@@ -30,6 +30,6 @@ User.init(
           len: [8],
         },
       },
-    };
+    });
 
     module.exports = User;
