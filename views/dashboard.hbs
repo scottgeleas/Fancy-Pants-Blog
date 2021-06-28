@@ -1,0 +1,68 @@
+<h2>DASHBOARD</h2>
+<nav>
+    {{#if loggedIn}}
+    <a href="/">Homepage</a><a href="/logout">Log Out</a>
+    {{/if}}
+    {{#unless loggedIn}}
+    <a href="/login">Login</a><a href="/signup">Sign Up</a>
+    {{/unless}}
+</nav>
+
+{{#each userPosts as |post|}}
+
+
+
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        {{post.title}}
+    </div>
+    <a href="/post/{{post.id}}">edit post</a>
+    <div class="button popup-button" data-target="#popup-main">edit</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{post.content}}</li>
+        <li class="list-group-item">Created on :{{post.date_created}}
+            By:{{post.user_id}}
+            Post ID:{{post.id}}</li>
+    </ul>
+
+    <div class="popup" id="popup-main">
+      <div class="popup-overlay popup-button" data-target="#popup-main"></div>
+      <div class="popup-inner">
+        <h2>{{post.title}}</h2>
+        <form  class="edit-post">
+        <input type="text" name="title" value="{{post.title}}">
+        <textarea name="content" cols="30" rows="10">{{post.content}}</textarea>
+    </form>
+        <button class="button popup-button" data-target="#popup-main">
+          Close
+        </button>
+      </div>
+    </div>
+
+</div>
+
+
+{{else}}
+<h6>No posts here! Make one!</h6>
+{{/each}}
+
+<div class="createPost">
+    <a href="/new-post">Create New Post</a>
+</div>
+
+<script>
+    window.onload = () => {
+    const popup_btns = document.querySelectorAll('.popup-button');
+
+    popup_btns.forEach(button => {
+        button.addEventListener('click', e => {
+            const target = e.target.dataset.target;
+
+            const popup_el = document.querySelector(target);
+            if (popup_el != null) {
+                popup_el.classList.toggle('is-active');
+            }
+        });
+    });
+}
+</script>

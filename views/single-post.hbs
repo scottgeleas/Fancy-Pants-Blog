@@ -1,0 +1,24 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        <a href="/post/{{post.id}}"> {{post.title}}</a>
+    </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{post.content}}</li>
+            <li class="list-group-item">Created on :{{post.date_created}} By:{{post.user_id}} Post ID:{{post.id}}</li>
+        </ul>
+    {{#if loggedIn}}
+        <form id="comment-form">
+            <textarea name="text" cols="30" rows="10"></textarea>
+            <button>add comment</button>
+        </form>
+    {{/if}}
+    {{#each post.comments as |comment|}}
+    <div>
+        {{comment.text}}{{comment.post_id}}{{comment.date_created}}{{comment.user_id}}
+    </div>
+    {{/each}}
+</div>
+
+{{#if loggedIn}}
+<script src="/add-comment.js"></script>
+{{/if}}

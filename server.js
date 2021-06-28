@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3001;
 const sess = {
     secret: 'Super secret secret',
     cookie: {
-        expires: 10 * 60 * 1000
+        expires: 30 * 60 * 1000
     },
     resave: false,
     saveUninitialized: true,
@@ -30,22 +30,22 @@ app.use(session(sess));
 
 // // Inform Express.js on which template engine to use
 
-app.engine('handlebars', exphbs.engine);
+const hbs = exphbs.create({
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, '/views/layouts/'),
+});
 
-app.engine('handlebars', exphbs());
-
-// app.engine('handlebars', exphbs({
-//     layoutsDir: __dirname + '/views/layouts',
-//     }));
-
-app.set('view engine', 'handlebars');
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
 
 // middleware to use so that http request will work smoothly
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 // defines the location of where to get static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // all of the files under public folder are available statically on home route.
 
 // express app, use these route from my routes folder
 app.use(routes);
