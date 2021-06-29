@@ -1,7 +1,7 @@
-# 
-
+# Fancy Pants Blog
+[Live Deployment]()
  ## Description
-
+This is a blog for fancy people only!(Just kidding). This is a simple blog template website for users to be able to sign up, log in, and correspond with each other through making post and commenting on those posts. 
  ## Getting Started:
 
 If you want to edit this app you must have a Github account, have downloaded Node.js, Express.js, Visual Studio Code.
@@ -9,7 +9,7 @@ If you want to edit this app you must have a Github account, have downloaded Nod
 - Create a Github account here: [Github](https://github.com/)
 - Download Visual Studio here: [Visual Studio](https://code.visualstudio.com/download/)
 - Download Node.js: [Node.js](https://nodejs.org/en/)
-- Repository link: [)
+- Repository link: [Fancy Pants Repo](https://github.com/scottgeleas/Fancy-Pants-Blog)
 
  ### Authors:
 
@@ -20,8 +20,9 @@ If you want to edit this app you must have a Github account, have downloaded Nod
 - Javascript
 - Node.js
 - Express.js
+- MySQL
 - Sequelize
-- Handelbars.js
+- Handlebars.js
 - Visual Studio Code
 
  ### Acknowledgments:
