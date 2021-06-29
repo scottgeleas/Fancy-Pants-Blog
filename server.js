@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
+const helpers = require('./utils/helpers');
 
 // setting up a connection to your SQL database
 const sequelize = require('./config/connection');
@@ -34,6 +35,7 @@ const hbs = exphbs.create({
     extname: 'hbs',
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, '/views/layouts/'),
+    helpers: helpers,
 });
 
 app.engine('hbs', hbs.engine);

@@ -1,22 +1,12 @@
 [
     {
-        "title": "post title",
-        "content": "Post TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost Text",
+        "title": "Scott post title",
+        "content": "PostTextPostTextPostTextPost TextPostTextPostTextPostTextPostTextPost",
         "user_id": 1
     },
     {
-        "title": " john 1post title",
-        "content": "Post TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost Text",
+        "title": " John post title",
+        "content": "PostTextPostTextPostTextPost TextPostTextPostTextPostTextPostTextPost",
         "user_id": 2
-    },
-    {
-        "title": "john 1post title",
-        "content": "Post TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost Text",
-        "user_id": 2
-    },
-    {
-        "title": "post title",
-        "content": "Post TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost TextPost Text",
-        "user_id": 1
     }
 ]

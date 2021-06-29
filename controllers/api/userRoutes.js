@@ -13,7 +13,6 @@ router.post('/signup', async (req, res) => {
 
 
         const userData = await User.create(newUser);
-        console.log(user)
 
         req.session.save(() => {
             req.session.user_id = userData.id;

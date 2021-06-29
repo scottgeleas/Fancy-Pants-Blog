@@ -1,68 +1,72 @@
-<h2>DASHBOARD</h2>
+<h1>DASHBOARD</h1>
+
 <nav>
     {{#if loggedIn}}
-    <a href="/">Homepage</a><a href="/logout">Log Out</a>
-    {{/if}}
-    {{#unless loggedIn}}
+    <a href="/">Homepage</a><a href="/new-post">Create New Post</a><a href="/logout">Log Out</a>
+    {{else}}
     <a href="/login">Login</a><a href="/signup">Sign Up</a>
-    {{/unless}}
+    {{/if}}
 </nav>
+<div class="main">
+    {{#each userPosts as |post|}}
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            <a href="/post/{{post.id}}">{{post.title}}</a>
+        </div>
 
-{{#each userPosts as |post|}}
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{post.content}}</li>
+            <li class="list-group-item">Created on :{{format_date
+                post.date_created
+                }}</li>
+        </ul>
 
-
-
-<div class="card" style="width: 18rem;">
-    <div class="card-header">
-        {{post.title}}
-    </div>
-    <a href="/post/{{post.id}}">edit post</a>
-    <div class="button popup-button" data-target="#popup-main">edit</div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{post.content}}</li>
-        <li class="list-group-item">Created on :{{post.date_created}}
-            By:{{post.user_id}}
-            Post ID:{{post.id}}</li>
-    </ul>
-
-    <div class="popup" id="popup-main">
-      <div class="popup-overlay popup-button" data-target="#popup-main"></div>
-      <div class="popup-inner">
-        <h2>{{post.title}}</h2>
-        <form  class="edit-post">
-        <input type="text" name="title" value="{{post.title}}">
-        <textarea name="content" cols="30" rows="10">{{post.content}}</textarea>
-    </form>
-        <button class="button popup-button" data-target="#popup-main">
-          Close
-        </button>
-      </div>
+        <button class="button popup-button edit-post" data-target="#popup-main" data-toggle="modal"
+            data-post-id="{{post.id}}" data-post-title="{{post.title}}" data-post-content="{{post.content}}">Edit
+            Post</button>
+        <button class="deleteButton" data-post-id="{{post.id}}">Delete Post</button>
     </div>
 
+    {{else}}
+    <h6>No posts here! Make one!</h6>
+    {{/each}}
 </div>
 
+<div class="modal fade" id="popup-main" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="editPostForm">
+            <div class="modal-content">
 
-{{else}}
-<h6>No posts here! Make one!</h6>
-{{/each}}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-<div class="createPost">
-    <a href="/new-post">Create New Post</a>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="postTitle">Post Title</label>
+                        <input type="text" class="form-control" id="postTitle" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postContent">Post Content</label>
+                        <textarea id="postContent" class="form-control" name="text" rows="10"></textarea>
+                    </div>
+
+                    <input type="hidden" id="postID" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
-<script>
-    window.onload = () => {
-    const popup_btns = document.querySelectorAll('.popup-button');
-
-    popup_btns.forEach(button => {
-        button.addEventListener('click', e => {
-            const target = e.target.dataset.target;
-
-            const popup_el = document.querySelector(target);
-            if (popup_el != null) {
-                popup_el.classList.toggle('is-active');
-            }
-        });
-    });
-}
-</script>
+<script src="/edit-post.js"></script>
+<script src="/delete-post.js"></script>

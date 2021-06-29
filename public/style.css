@@ -1,0 +1,24 @@
+h1 {
+    background-color: rgb(147, 248, 214);
+    text-align: center;
+}
+
+nav {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    margin: 40px;
+}
+
+.createPost {
+    display: flex;
+    justify-content: center;
+}

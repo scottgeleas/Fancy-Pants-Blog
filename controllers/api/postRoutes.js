@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
         });
 });
 
-router.post('/', withAuth, async(req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         let newPost = {
             title: req.body.title,
@@ -28,12 +29,18 @@ router.post('/', withAuth, async(req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const requestData = await Post.update(req.body, {
-        where: {
-            id: req.params.id
-        }
-    });
-    res.status(200).json(req.body)
+    try {
+        const requestData = await Post.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.status(200).json(req.body)
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to update post"
+        })
+    }
 });
 
 router.delete('/:id', async (req, res) => {
