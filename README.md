@@ -1,10 +1,17 @@
 # Fancy Pants Blog
-[Live Deployment]()
+[Live Deployment](https://fancy-pants-blog.herokuapp.com/)
  ## Description
-This is a blog for fancy people only!(Just kidding). This is a simple blog template website for users to be able to sign up, log in, and correspond with each other through making post and commenting on those posts. 
+This is a blog for fancy people only! (Just kidding) 
+
+This is a simple blog template website for users to be able to sign up, log in, and correspond with each other through making posts and commenting on those posts. 
+
+![Homepage](public/images/homepage.png)
+![Dashboard](public/images/dashboard.png)
+![Single Post](public/images/single-post.png)
+
  ## Getting Started:
 
-If you want to edit this app you must have a Github account, have downloaded Node.js, Express.js, Visual Studio Code.
+If you want to edit this app you must have a Github account, have downloaded Node.js, MySQL, and Visual Studio Code.
 
 - Create a Github account here: [Github](https://github.com/)
 - Download Visual Studio here: [Visual Studio](https://code.visualstudio.com/download/)
